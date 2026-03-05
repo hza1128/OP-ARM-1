@@ -66,5 +66,10 @@ git clone -b v5-lua https://github.com/sbwml/luci-app-mosdns.git feeds/luci/appl
 # 修改主题背景
 # cp -f $GITHUB_WORKSPACE/bg1.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
+# 修改版本为编译日期
+date_version=$(date +"%y.%m.%d")
+orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
+sed -i "s/${orig_version}/R${date_version} by hza800755/g" package/lean/default-settings/files/zzz-default-settings
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
