@@ -29,7 +29,8 @@ function merge_feed(){
 }
 rm -rf package/custom; mkdir package/custom
 
-# Modify default IP
+# 设置默认ip
+sed -i 's/192.168.1.1/192.168.10.12/g' package/base-files/luci/bin/config_generate
 sed -i 's/192.168.1.1/192.168.10.12/g' package/base-files/files/bin/config_generate
 
 # poweroff
