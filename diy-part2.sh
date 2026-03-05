@@ -30,20 +30,19 @@ function merge_feed(){
 rm -rf package/custom; mkdir package/custom
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.10.11/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.12/g' package/base-files/files/bin/config_generate
 
 # poweroff
 git clone https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 
-#主题
-rm -rf feeds/luci/applications/luci-app-argon-config
-rm -rf feeds/kenzo/luci-app-argon-config
-git clone -b 18.06 https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/applications/luci-app-argon-config
+# 18.06 Argone theme
+git clone --depth=1 -b main https://github.com/hza81007155/luci-theme-argone package/luci-theme-argone
+git clone --depth=1 -b main https://github.com/hza81007155/luci-app-argone-config package/luci-app-argone-config
 
-rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf feeds/kenzo/luci-theme-argon
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-sed -i '41,59d' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
+# istore
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci package/nas-packages-luci
+git clone --depth=1 -b master https://github.com/linkease/nas-packages package/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/istore package/istore
 
 # 微信推送
 rm -rf feeds/kenzo/luci-app-wechatpush
@@ -64,7 +63,7 @@ rm -rf feeds/luci/applications/luci-app-mosdns
 git clone -b v5-lua https://github.com/sbwml/luci-app-mosdns.git feeds/luci/applications/luci-app-mosdns
 
 # 修改主题背景
-cp -f $GITHUB_WORKSPACE/bg1.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+# cp -f $GITHUB_WORKSPACE/bg1.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
