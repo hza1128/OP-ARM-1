@@ -45,6 +45,12 @@ git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci packag
 git clone --depth=1 -b master https://github.com/linkease/nas-packages package/nas-packages
 git clone --depth=1 -b main https://github.com/linkease/istore package/istore
 
+# 科学插件
+git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
+git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/luci-app-passwall
+git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall2 package/openwrt-passwall2
+
 # 微信推送
 rm -rf feeds/kenzo/luci-app-wechatpush
 rm -rf feeds/luci/applications/luci-app-serverchan
