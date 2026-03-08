@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: R6C
+name: R6S
 
 on:
   repository_dispatch:
