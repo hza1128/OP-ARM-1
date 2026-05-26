@@ -40,6 +40,9 @@ git clone https://github.com/esirplayground/luci-app-poweroff package/luci-app-p
 git clone --depth=1 -b master https://github.com/hza81007155/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 -b master https://github.com/hza81007155/luci-app-argon-config package/luci-app-argon-config
 
+#设置默认主题
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-light/Makefile
+
 # istore
 git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci package/nas-packages-luci
 git clone --depth=1 -b master https://github.com/linkease/nas-packages package/nas-packages
